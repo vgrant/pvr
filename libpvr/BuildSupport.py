@@ -223,6 +223,8 @@ def setupEnv(env, pathToRoot = "."):
     env.Append(LIBS = ["z", "pthread"])
     # Hdf5 lib
     env.Append(LIBS = ["hdf5"])
+    # Boost system
+    env.Append(LIBS = ["boost_system-mt"])
     # Externals
     env.Append(CPPPATH = os.path.join(pathToRoot, "external/include"))
     env.Append(LIBPATH = os.path.join(pathToRoot, "external/libs/" + variantDir(env)))
@@ -273,7 +275,7 @@ def setupPyEnv(env, pathToRoot = "."):
     # Libraries
     env.Prepend(CPPPATH = systemPyCppPaths[sys.platform][architectureStr()][pythonVer()])
     env.Prepend(LIBPATH = systemPyLibPaths[sys.platform][architectureStr()][pythonVer()])
-    env.Append(LIBS = ["boost_python"])
+    env.Append(LIBS = ["boost_python-mt"])
     # OSX specific
     if sys.platform == darwin:
         # env.Append(FRAMEWORKS = ["Python"])
